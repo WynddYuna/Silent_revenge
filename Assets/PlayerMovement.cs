@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TextCore;
 using UnityEngine.Windows;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    bool    isFacingRight = true;
     [Header("Movement")]
      public float moveSpeed = 5f;
     float horizontalMovement;
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2 (horizontalMovement * moveSpeed, rb.velocity.y);
         GroundCheck();
         Gravity();
+        Flip();
     }
 
 
@@ -73,6 +76,17 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }       
+
+    private void Flip(){
+        if(isFacingRight &&  horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 ls = transform.localScale;  
+            ls.x*= -1f; 
+            transform.localScale = ls;
+
+        }
+    }
 
     private void OnDrawGizmosSelected(){
         
