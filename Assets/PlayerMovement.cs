@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     public void Jump (InputAction.CallbackContext context){
         if(context.performed){
             rb.velocity = new Vector2(rb.velocity.x,jumpPower); 
+        }else if(context.canceled){
+            rb.velocity =  new Vector2(rb.velocity.x,rb.velocity.y * 0.5f);
         }
     }
 }
