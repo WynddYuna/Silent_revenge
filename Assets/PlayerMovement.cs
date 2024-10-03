@@ -21,15 +21,36 @@ public class PlayerMovement : MonoBehaviour
       public Transform groundCheckPos;
       public Vector2 groundCheckSize = new Vector2(0.5f,0.05f);
       public LayerMask groundLayer;
-    // Start is called before the first frame update
 
+
+   [Header("Gravity")]
+    public float baseGravity=2f;
+    public float maxFallSpeed=18f;
+    public float fallSpeedMultiplier =2f;
 
     // Update is called once per frame
     void Update()
     {
         rb.velocity = new Vector2 (horizontalMovement * moveSpeed, rb.velocity.y);
         GroundCheck();
-        
+        Gravity();
+    }
+
+
+    private void Gravity()
+    {
+        if(rb.velocity.y < 0)
+        {
+            rb.gravityScale = baseGravity * fallSpeedMultiplier;
+            rb.velocity = new Vector2(rb.velocity.x,Mathf.Max(rb.velocity.y,-maxFallSpeed));
+
+        }
+        else    
+        {
+            rb.gravityScale= baseGravity;
+
+        }
+
     }
     public void Move (InputAction.CallbackContext context)
     {
