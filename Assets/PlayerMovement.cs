@@ -35,16 +35,24 @@ public class PlayerMovement : MonoBehaviour
         horizontalMovement = context.ReadValue<Vector2>().x;
     }
     public void Jump (InputAction.CallbackContext context){
+        if (isGrounded()){
         if(context.performed){
             rb.velocity = new Vector2(rb.velocity.x,jumpPower); 
         }else if(context.canceled){
             rb.velocity =  new Vector2(rb.velocity.x,rb.velocity.y * 0.5f);
         }
     }
+    }
+    private bool isGrounded(){
+        if(Physics2D.OverlapBox(groundCheckPos.position,groundCheckSize,0,groundLayer)){
+            return true;
+        }
+        return false;
+    }       
 
     private void OnDrawGizmosSelected(){
         
         Gizmos.color = Color.white;
-        Gizmos.DrawCube(groundCheckPos.position,groundCheckSize);
+        Gizmos.DrawWireCube(groundCheckPos.position,groundCheckSize);
     }
 }
