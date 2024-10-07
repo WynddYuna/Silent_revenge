@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,6 +9,12 @@ using UnityEngine.Windows;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    Animator animator;  
+    void Start(){
+
+        animator= GetComponent<Animator>();
+    }
+
     bool    isFacingRight = true;
     [Header("Movement")]
      public float moveSpeed = 5f;
@@ -37,7 +44,11 @@ public class PlayerMovement : MonoBehaviour
         GroundCheck();
         Gravity();
         Flip();
+        animator.SetFloat ("xVelocity",Math.Abs(rb.velocity.x));    
     }
+
+
+
 
 
     private void Gravity()
