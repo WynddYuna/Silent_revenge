@@ -41,22 +41,22 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: 1sky
+  - name: 1ground
     uniqueID: 3931617193
     locked: 0
-  - name: 2cloud
+  - name: 2bg
     uniqueID: 90875127
     locked: 0
-  - name: 3background
-    uniqueID: 2498443791
-    locked: 0
-  - name: ground
+  - name: 3bed
     uniqueID: 1501167359
     locked: 0
   - name: player
+    uniqueID: 2498443791
+    locked: 0
+  - name: 4door
     uniqueID: 1939357401
     locked: 0
-  - name: 4foreground
+  - name: 
     uniqueID: 3965773999
     locked: 0
   - name: New Layer 7
