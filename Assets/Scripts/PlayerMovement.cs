@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
    public Animator animator;  
+  
     void Start(){
 
         animator= GetComponent<Animator>();
@@ -83,10 +84,12 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x,jumpPower); 
             jumpsRemaining--;
             animator.SetTrigger("jump");
+           
         }else if(context.canceled){
             rb.velocity =  new Vector2(rb.velocity.x,rb.velocity.y * 0.5f);
              jumpsRemaining--;
               animator.SetTrigger("jump"); 
+              
         }
     }
     }
