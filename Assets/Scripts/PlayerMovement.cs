@@ -9,7 +9,8 @@ using UnityEngine.Windows;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
-    Animator animator;  
+   public Animator animator;  
+  
     void Start(){
 
         animator= GetComponent<Animator>();
@@ -18,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     bool    isFacingRight = true;
     [Header("Movement")]
      public float moveSpeed = 5f;
-    float horizontalMovement;
+    float horizontalMovement; 
 
       [Header("Jumping")]
        public float jumpPower = 10f;
@@ -44,8 +45,15 @@ public class PlayerMovement : MonoBehaviour
         GroundCheck();
         Gravity();
         Flip();
-        animator.SetFloat ("xVelocity",Math.Abs(rb.velocity.x));    
+
+
+
+        animator.SetFloat("yVelocity",rb.velocity.y);
+        animator.SetFloat("magnitude",rb.velocity.magnitude);
+
+        
     }
+
 
 
 
@@ -75,9 +83,13 @@ public class PlayerMovement : MonoBehaviour
         if(context.performed){
             rb.velocity = new Vector2(rb.velocity.x,jumpPower); 
             jumpsRemaining--;
+            animator.SetTrigger("jump");
+           
         }else if(context.canceled){
             rb.velocity =  new Vector2(rb.velocity.x,rb.velocity.y * 0.5f);
              jumpsRemaining--;
+              animator.SetTrigger("jump"); 
+              
         }
     }
     }
