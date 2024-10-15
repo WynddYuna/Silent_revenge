@@ -7,6 +7,7 @@ public class TabController : MonoBehaviour
 {
     public Image[] tabImages;
     public GameObject[] pages;
+    public Image[] bloodEffectImages;
 
     // Start is called before the first frame update
     void Start()
@@ -16,38 +17,14 @@ public class TabController : MonoBehaviour
 
     public void ActivateTab(int tabNO)
     {
-        if (tabImages != null && pages != null)
+        for (int i = 0; i < pages.Length; i++)
         {
-            for (int i = 0; i < pages.Length; i++)
-            {
-                if (pages[i] != null)
-                {
-                    pages[i].SetActive(false);
-                }
-                if (tabImages[i] != null)
-                {
-                    if (i == tabNO)
-                    {
-                        tabImages[i].sprite = bloodImage; // Set the blood image for the active tab
-                        tabImages[i].color = Color.white; // You can also change the color if needed
-                    }
-                    else
-                    {
-                        tabImages[i].sprite = tabImages[i].sprite; // Reset the image of the inactive tabs to their default state
-                        tabImages[i].color = Color.red; // Reset the color of the inactive tabs
-                    }
-                }
-            }
-            if (pages[tabNO] != null)
-            {
-                pages[tabNO].SetActive(true);
-            }
+            pages[i].SetActive(false);
+            tabImages[i].color = Color.grey;
+            bloodEffectImages[i].enabled = false; // hide blood effect image
         }
-        else
-        {
-            Debug.LogError("tabImages or pages arrays are not initialized");
-        }
+        pages[tabNO].SetActive(true);
+        tabImages[tabNO].color = Color.white;
+        bloodEffectImages[tabNO].enabled = true; // show blood effect image
     }
-
-    public Sprite bloodImage; // Assign this in the Inspector window
 }
