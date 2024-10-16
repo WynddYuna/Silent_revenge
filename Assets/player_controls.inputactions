@@ -137,11 +137,22 @@
                 },
                 {
                     "name": "",
-                    "id": "0b63e4b4-73fe-45ad-a8ad-3743d29b2a43",
-                    "path": "",
-                    "interactions": "",
+                    "id": "a7ca6846-3298-4008-b100-bfe9e3dd1c11",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "Hold",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d128a789-155f-4a6d-89b2-00bc9ceb747f",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
