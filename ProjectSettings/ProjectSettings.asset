@@ -817,11 +817,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 21eb90c7-26d2-48bf-addb-55a1e8c5f217
+  cloudProjectId: 6511a113-6ffa-4df6-9469-31896699c9ee
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Silent_revenge
-  organizationId: malab0
+  organizationId: winonauna
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
