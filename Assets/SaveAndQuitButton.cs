@@ -7,20 +7,21 @@ public class SaveAndQuitButton : MonoBehaviour
     {
         // Save the game state
         SaveGameState();
-
         // Quit the game
         Application.Quit();
+
+#if UNITY_EDITOR
+        // Exit play mode in the editor
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 
     private void SaveGameState()
     {
         // Get the current scene index
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-        // Save the current scene index to a file or a database
-        // For example, you can use PlayerPrefs to save the scene index
+        // Save the current scene index to PlayerPrefs
         PlayerPrefs.SetInt("CurrentSceneIndex", currentSceneIndex);
-
-        // You can also save other game state data, such as player progress, scores, etc.
+        PlayerPrefs.Save();
     }
 }
