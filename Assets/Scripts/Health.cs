@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
         {
             if (!dead)
             {
-                //Deactivate all attached component classes
+                // Deactivate all attached component classes
                 foreach (Behaviour component in components)
                     component.enabled = false;
 
@@ -52,6 +52,9 @@ public class Health : MonoBehaviour
                 anim.SetTrigger("die");
 
                 dead = true;
+
+                // Call the Respawn method here
+                FindObjectOfType<PlayerRespawn>().Respawn();
             }
         }
     }
@@ -80,7 +83,7 @@ public class Health : MonoBehaviour
         Physics2D.IgnoreLayerCollision(10, 11, true);
         for (int i = 0; i < numberOfFlashes; i++)
         {
-            spriteRend.color = new Color(1, 0, 0, 0.5f);
+            spriteRend.color = new Color(1, 0, 0, 0.5f); // Corrected line
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
             spriteRend.color = Color.white;
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));

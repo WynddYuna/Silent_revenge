@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
+    [SerializeField] private float damageAmount = 1f; // Amount of damage to deal
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            PlayerRespawn playerRespawn = other.GetComponent<PlayerRespawn>();
-            if (playerRespawn != null)
+            Health playerHealth = other.GetComponent<Health>();
+            if (playerHealth != null)
             {
-                playerRespawn.Respawn(); // Call the respawn method instead of reloading the scene
+                playerHealth.TakeDamage(damageAmount); // Deal damage to the player
             }
         }
     }

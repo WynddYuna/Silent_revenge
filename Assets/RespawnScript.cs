@@ -11,7 +11,7 @@ public class RespawnScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            player.transform.position = respawnPoint.transform.position;
+            player.transform.position = respawnPoint.transform.position; // Move player to respawn point
         }
     }
 }
