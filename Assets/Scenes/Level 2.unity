@@ -74763,7 +74763,7 @@ MonoBehaviour:
   jumpPower: 10
   maxJumps: 2
   groundCheckPos: {fileID: 1060839938}
-  groundCheckSize: {x: 2.71, y: 0.4}
+  groundCheckSize: {x: 2.5, y: 0.4}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
