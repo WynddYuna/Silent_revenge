@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
 
-    public CheckPoint currentCheckPoint;
 
     void Start()
     {
@@ -111,34 +110,6 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Check if the player collided with a checkpoint
-        if (collision.gameObject.GetComponent<CheckPoint>() != null)
-        {
-            currentCheckPoint = collision.gameObject.GetComponent<CheckPoint>();
-        }
-
-        // Check if the player collided with a spike trap
-        if (collision.gameObject.tag == "SpikeTrap")
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        // Respawn the player to the last checkpoint
-        if (currentCheckPoint != null)
-        {
-            transform.position = currentCheckPoint.checkpointPosition;
-            transform.rotation = currentCheckPoint.checkpointRotation;
-        }
-        else
-        {
-            // If no checkpoint is set, respawn to the starting position
-            transform.position = Vector3.zero;
-            transform.rotation = Quaternion.identity;
-        }
-    }
+  
+  
 }
