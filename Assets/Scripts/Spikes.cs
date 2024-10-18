@@ -21,7 +21,9 @@ public class Spikes : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(Respawn);
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            // Reload the current scene
+            SceneManager.LoadScene(currentSceneName);
         }
     }
 }
