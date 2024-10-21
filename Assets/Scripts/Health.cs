@@ -19,10 +19,6 @@ public class Health : MonoBehaviour
     [SerializeField] private Behaviour[] components;
     private bool invulnerable;
 
-    [Header("Death Sound")]
-    [SerializeField] private AudioClip deathSound;
-    [SerializeField] private AudioClip hurtSound;
-
     private Transform lastCheckpoint;
 
     private void Awake()
@@ -35,14 +31,19 @@ public class Health : MonoBehaviour
     public void TakeDamage(float _damage)
     {
         if (invulnerable) return;
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
+        // Only reduce health if the player is not already dead
         if (currentHealth > 0)
         {
             anim.SetTrigger("hurt");
             StartCoroutine(Invunerability());
+
+            // Respawn at the last checkpoint after taking damage
+            RespawnAtCheckpoint();
         }
-        else
+
+        // Check if health is zero after taking damage
+        if (currentHealth <= 0)
         {
             HandleDeath();
         }
@@ -61,19 +62,19 @@ public class Health : MonoBehaviour
             anim.SetBool("grounded", true);
             anim.SetTrigger("die");
 
-            // Call the Respawn method here
+            // Respawn at the start when dead
             FindObjectOfType<PlayerRespawn>().RespawnToStart(); // Respawn at the beginning
         }
     }
 
-    public void AddHealth(float _value)
-    {
-        currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
-    }
-
     public void Respawn()
     {
-        currentHealth = startingHealth; // Restore health to starting value
+        // Reset health if the player is dead
+        if (currentHealth <= 0)
+        {
+            currentHealth = startingHealth; // Restore health to starting value
+        }
+
         anim.ResetTrigger("die");
         anim.Play("idle");
 
@@ -94,7 +95,22 @@ public class Health : MonoBehaviour
         if (lastCheckpoint != null)
         {
             transform.position = lastCheckpoint.position; // Move player to checkpoint location
-            Respawn(); // Call the Respawn method in Health
+            
+            // Reduce health only after confirming respawn
+            if (currentHealth > 0)
+            {
+                currentHealth--; // Reduce health on respawn
+            }
+
+            // Check if health is zero after respawn
+            if (currentHealth <= 0)
+            {
+                HandleDeath(); // Handle death if health is zero
+            }
+            else
+            {
+                Respawn(); // Call the Respawn method in Health
+            }
         }
     }
 

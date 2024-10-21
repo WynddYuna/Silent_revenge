@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
-    [SerializeField] private float damageAmount = 1f; // Amount of damage to deal
+ [SerializeField] private float damageAmount = 1f; // Amount of damage to deal
 
     void OnTriggerEnter2D(Collider2D other)
     {
