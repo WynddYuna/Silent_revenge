@@ -13,7 +13,9 @@ public class Item : MonoBehaviour
     private int quantity;
 
     [SerializeField ]
-    private     Sprite sprite;
+    private Sprite sprite;
+
+    private Sprite itemSprite;
 
 [TextArea]
    [SerializeField]
@@ -34,9 +36,13 @@ public class Item : MonoBehaviour
     private void  OnCollisionEnter2D(Collision2D collision){
 
         if(collision.gameObject.tag=="Player"){
-            inventoryManager.AddItem(itemName,quantity,sprite,itemDescription);
-            Destroy(gameObject);
+           int leftOverItems= inventoryManager.AddItem(itemName,quantity,sprite,itemDescription);
+           if(leftOverItems<= 0)
+              Destroy(gameObject);
+           else
+           quantity=leftOverItems;
         }
     }
 
 }
+ 

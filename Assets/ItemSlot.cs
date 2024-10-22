@@ -21,6 +21,9 @@ public Sprite itemSprite;
 public bool isFull;
 public string itemDescription;
 
+[SerializeField]
+private int maxNumberOfItems;
+
 
 // ITEM SLOT
 
@@ -28,7 +31,7 @@ public string itemDescription;
 private TMP_Text quantityText;
 
 [SerializeField]
-private Image itemImage;
+public Image itemImage;
 
 
 
@@ -48,20 +51,36 @@ private void Start(){
 }
 
 
-public void AddItem(string itemName, int quantity, Sprite itemSprite,string itemDescription){
+public int AddItem(string itemName, int quantity, Sprite itemSprite,string itemDescription){
 
+    if(isFull)
+       return quantity;
 
-    this.itemName = itemName;
-    this.quantity = quantity;
     this.itemSprite = itemSprite;
-    this.itemDescription= itemDescription;
-    isFull= true;
-
-    quantityText.text= quantity.ToString();
-
-    quantityText.enabled=true;
     itemImage.sprite=itemSprite;
     itemImage.enabled=true;
+
+    this.itemName = itemName;
+  
+    this.itemDescription= itemDescription;
+
+    this.quantity += quantity;
+    if( this.quantity >= maxNumberOfItems){
+
+
+     quantityText.text= quantity.ToString();
+
+    quantityText.enabled=true;
+     isFull= true;
+
+   int  extraItems= this.quantity-maxNumberOfItems;
+   this.quantity=maxNumberOfItems;
+   return extraItems;
+   }
+   quantityText.text=maxNumberOfItems.ToString();
+   quantityText.enabled= true;
+   return 0;
+ 
 }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -86,7 +105,7 @@ public void AddItem(string itemName, int quantity, Sprite itemSprite,string item
         thisItemSelected=true;
         ItemDescriptionNameText.text =itemName;
         ItemDescriptionText.text =itemDescription;
-        itemDescriptionImage.sprite=itemSprite;
+        itemDescriptionImage.sprite=itemSprite;  
 
 
 
