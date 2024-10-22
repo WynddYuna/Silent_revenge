@@ -381,3 +381,5 @@ MonoBehaviour:
   isFull: 0
   quantityText: {fileID: 2505258754488557151}
   itemImage: {fileID: 2511699919163098682}
+  selectedShader: {fileID: 4942679155757276207}
+  thisItemSelected: 0
