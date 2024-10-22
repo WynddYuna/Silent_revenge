@@ -41,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ayaw ko pls
+    uniqueID: 1835124867
+    locked: 0
   - name: bg
     uniqueID: 347582443
     locked: 0
@@ -67,4 +70,7 @@ TagManager:
     locked: 0
   - name: New Layer 7
     uniqueID: 790396771
+    locked: 0
+  - name: cover up
+    uniqueID: 4156687353
     locked: 0
