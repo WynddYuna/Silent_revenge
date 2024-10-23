@@ -8,114 +8,95 @@ using Unity.VisualScripting;
 using System.Security.Cryptography;
 using Unity.Collections.LowLevel.Unsafe;
 
-public class ItemSlot : MonoBehaviour,IPointerClickHandler 
-
-
+public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
+    // ITEM DATA
+    public string itemName;
+    public int quantity;
+    public Sprite itemSprite;
+    public bool isFull;
+    public string itemDescription;
 
-//ITEM DATA
+    [SerializeField]
+    private int maxNumberOfItems;
 
-public string itemName;
-public int quantity;
-public Sprite itemSprite;
-public bool isFull;
-public string itemDescription;
+    // ITEM SLOT
+    [SerializeField]
+    private TMP_Text quantityText;
 
-[SerializeField]
-private int maxNumberOfItems;
+    [SerializeField]
+    public Image itemImage;
 
+    // ITEM DESCRIPTION
+    public Image itemDescriptionImage;
+    public TMP_Text ItemDescriptionNameText;
+    public TMP_Text ItemDescriptionText;
 
-// ITEM SLOT
+    public GameObject selectedShader;
+    public bool thisItemSelected;
 
-[SerializeField]
-private TMP_Text quantityText;
+    private InventoryManager inventoryManager;
 
-[SerializeField]
-public Image itemImage;
+    private void Start()
+    {
+        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+    }
 
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
+    {
+        if (isFull)
+            return quantity;
 
+        this.itemSprite = itemSprite;
+        itemImage.sprite = itemSprite;
+        itemImage.enabled = true;
 
-//ITEM DESCRIPTION
-public  Image itemDescriptionImage;
-public TMP_Text ItemDescriptionNameText;
-public TMP_Text ItemDescriptionText;
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
 
+        this.quantity += quantity;
 
-public GameObject selectedShader;
-public bool thisItemSelected;
+        // Check if the slot is full
+        if (this.quantity >= maxNumberOfItems)
+        {
+            this.quantity = maxNumberOfItems; // Ensure quantity does not exceed max
+            isFull = true;
+        }
 
-private InventoryManager inventoryManager;  
+        // Update the UI with the current quantity
+        quantityText.text = this.quantity.ToString();
+        quantityText.enabled = true;
 
-private void Start(){
-    inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
-}
-
-
-public int AddItem(string itemName, int quantity, Sprite itemSprite,string itemDescription){
-
-    if(isFull)
-       return quantity;
-
-    this.itemSprite = itemSprite;
-    itemImage.sprite=itemSprite;
-    itemImage.enabled=true;
-
-    this.itemName = itemName;
-  
-    this.itemDescription= itemDescription;
-
-    this.quantity += quantity;
-    if( this.quantity >= maxNumberOfItems){
-
-
-     quantityText.text= quantity.ToString();
-
-    quantityText.enabled=true;
-     isFull= true;
-
-   int  extraItems= this.quantity-maxNumberOfItems;
-   this.quantity=maxNumberOfItems;
-   return extraItems;
-   }
-   quantityText.text=maxNumberOfItems.ToString();
-   quantityText.enabled= true;
-   return 0;
- 
-}
+        // Return any extra items that couldn't be added
+        return this.quantity > maxNumberOfItems ? this.quantity - maxNumberOfItems : 0;
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Left){
-             OnLeftClick();
-
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            OnLeftClick();
         }
-        
-        if(eventData.button == PointerEventData.InputButton.Right){
+
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
             OnRightClick();
         }
     }
 
-    public void OnLeftClick(){
-
-
+    public void OnLeftClick()
+    {
         inventoryManager.DeselectAllSlots();
 
-
         selectedShader.SetActive(true);
-        thisItemSelected=true;
-        ItemDescriptionNameText.text =itemName;
-        ItemDescriptionText.text =itemDescription;
-        itemDescriptionImage.sprite=itemSprite;  
-
-
-
+        thisItemSelected = true;
+        ItemDescriptionNameText.text = itemName;
+        ItemDescriptionText.text = itemDescription;
+        itemDescriptionImage.sprite = itemSprite;
     }
 
-     public void OnRightClick(){
-
-
-
+    public void OnRightClick()
+    {
+        // Implement right click functionality if needed
     }
-
-    
 }
