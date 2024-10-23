@@ -9451,7 +9451,7 @@ GameObject:
   - component: {fileID: 1157818402}
   - component: {fileID: 1157818401}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: jumpscerr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
