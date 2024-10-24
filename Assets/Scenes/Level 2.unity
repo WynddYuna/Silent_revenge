@@ -3482,6 +3482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1206269772}
   - component: {fileID: 1206269771}
+  - component: {fileID: 1206269773}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -3501,7 +3502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa34f3fc4d38aa5408c7da5990b59528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressSlider: {fileID: 512308083}
 --- !u!4 &1206269772
 Transform:
   m_ObjectHideFlags: 0
@@ -3517,6 +3517,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206269773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206269770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe2eb7105811d344b6daab029823b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressSlider: {fileID: 512308083}
 --- !u!1001 &1210762376
 PrefabInstance:
   m_ObjectHideFlags: 0
