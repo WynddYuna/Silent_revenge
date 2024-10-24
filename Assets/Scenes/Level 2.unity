@@ -36123,6 +36123,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7429180301569763708, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
+      propertyPath: worth
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8597799221619550192, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: m_Name
       value: Clues (3)
