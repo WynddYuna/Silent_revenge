@@ -3769,6 +3769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressSlider: {fileID: 512308083}
+  loadCanvas: {fileID: 960874470}
 --- !u!1001 &1210762376
 PrefabInstance:
   m_ObjectHideFlags: 0

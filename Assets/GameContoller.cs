@@ -6,15 +6,17 @@ using UnityEngine.SceneManagement; // Required for scene management
 
 public class GameController : MonoBehaviour
 {
-    int progressAmount;
+    private int progressAmount;
     public Slider progressSlider;
+    public GameObject loadCanvas; // Optional: For UI purposes
+    private bool canLoadNextLevel = false; // New variable to track if the level can be loaded
 
     void Start()
     {
         progressAmount = 0;
         progressSlider.value = 0;
         Notes.OnNotesCollect += IncreaseProgressAmount;
-        HoldToLoadLevel.OnHoldComplete += LoadNextLevel;
+        HoldToLoadLevel.OnHoldComplete += TryLoadNextLevel; // Change to TryLoadNextLevel
     }
 
     void IncreaseProgressAmount(int amount)
@@ -25,7 +27,20 @@ public class GameController : MonoBehaviour
         if (progressAmount >= 100)
         {
             Debug.Log("Level Complete");
-            // Optionally trigger the hold to load next level here
+            canLoadNextLevel = true; // Allow loading next level
+            loadCanvas.SetActive(true); // Optional: Show loading UI
+        }
+    }
+
+    void TryLoadNextLevel()
+    {
+        if (canLoadNextLevel) // Check if the player can load the next level
+        {
+            LoadNextLevel();
+        }
+        else
+        {
+            Debug.Log("You need to collect more items!");
         }
     }
 
