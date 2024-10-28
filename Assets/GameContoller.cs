@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // Required for scene management
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -10,13 +10,24 @@ public class GameController : MonoBehaviour
     public Slider progressSlider;
     public GameObject loadCanvas; // Optional: For UI purposes
     private bool canLoadNextLevel = false; // New variable to track if the level can be loaded
+    public Button interactButton; // Reference to the UI button
 
     void Start()
     {
         progressAmount = 0;
         progressSlider.value = 0;
         Notes.OnNotesCollect += IncreaseProgressAmount;
-        HoldToLoadLevel.OnHoldComplete += TryLoadNextLevel; // Change to TryLoadNextLevel
+        interactButton.onClick.AddListener(TryLoadNextLevel); // Add listener to button
+        interactButton.gameObject.SetActive(false); // Hide the button initially
+    }
+
+    void Update()
+    {
+        // Show the button if the level is complete
+        if (canLoadNextLevel)
+        {
+            interactButton.gameObject.SetActive(true);
+        }
     }
 
     void IncreaseProgressAmount(int amount)

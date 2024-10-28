@@ -17,12 +17,12 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed = 5f;
-    float horizontalMovement;
+    private float horizontalMovement; // Keep this private
 
     [Header("Jumping")]
     public float jumpPower = 10f;
     public int maxJumps = 2;
-    int jumpsRemaining;
+    private int jumpsRemaining;
 
     [Header("GroundCheck")]
     public Transform groundCheckPos;
@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Update the player's velocity based on horizontal movement
         rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
         GroundCheck();
         Gravity();
@@ -104,5 +105,21 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
+    }
+
+    // New methods for button integration
+    public void MoveLeft()
+    {
+        horizontalMovement = -1f; // Set to move left
+    }
+
+    public void MoveRight()
+    {
+        horizontalMovement = 1f; // Set to move right
+    }
+
+    public void StopMoving()
+    {
+        horizontalMovement = 0f; // Stop movement
     }
 }
