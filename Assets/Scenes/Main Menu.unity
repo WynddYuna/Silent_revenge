@@ -742,7 +742,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 198357548}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 610190577}
+        m_TargetAssemblyTypeName: EpisodeMenu, Assembly-CSharp
+        m_MethodName: OpenLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &198357548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,7 +1203,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 366864946}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 610190577}
+        m_TargetAssemblyTypeName: EpisodeMenu, Assembly-CSharp
+        m_MethodName: OpenLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &366864946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1666,6 +1690,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 610190576}
+  - component: {fileID: 610190577}
   m_Layer: 0
   m_Name: Episode Panel
   m_TagString: Untagged
@@ -1691,6 +1716,24 @@ Transform:
   - {fileID: 1514695909}
   m_Father: {fileID: 1534088168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &610190577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610190575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f71d99226d6e0da4aa01880122a2f34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 198357547}
+  - {fileID: 1898230450}
+  - {fileID: 1220275394}
+  - {fileID: 366864945}
+  - {fileID: 1865077128}
 --- !u!1 &668263982
 GameObject:
   m_ObjectHideFlags: 0
@@ -2633,7 +2676,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -1217742024715364257, guid: 174ad86c4b61f42448923724585b9cd3, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.83
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2813,7 +2856,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1220275395}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 610190577}
+        m_TargetAssemblyTypeName: EpisodeMenu, Assembly-CSharp
+        m_MethodName: OpenLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1220275395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3511,7 +3566,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1865077129}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 610190577}
+        m_TargetAssemblyTypeName: EpisodeMenu, Assembly-CSharp
+        m_MethodName: OpenLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1865077129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3795,7 +3862,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1898230451}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 610190577}
+        m_TargetAssemblyTypeName: EpisodeMenu, Assembly-CSharp
+        m_MethodName: OpenLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1898230451
 MonoBehaviour:
   m_ObjectHideFlags: 0
