@@ -24,7 +24,8 @@ public class EpisodeMenu : MonoBehaviour
     }
     public void OpenLevel(int levelId)
     {
-        string levelName = "LVL" + levelId + " CS";
+        //string levelName = "LVL" + levelId + " CS";
+        string levelName = "Level " + levelId;
         SceneManager.LoadScene(levelName); 
     }
 }   
