@@ -8,15 +8,16 @@ public class SaveAndQuitButton : MonoBehaviour
         // Save the game state
         SaveGameState();
         // Quit the game
-        Application.Quit();
+        //Application.Quit();
+        SceneManager.LoadSceneAsync(0);
 
 #if UNITY_EDITOR
         // Exit play mode in the editor
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
 
-    private void SaveGameState()
+    public void SaveGameState()
     {
         // Get the current scene index
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;

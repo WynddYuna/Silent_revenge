@@ -10,6 +10,21 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
     }
 
+    public void ContinueGame()
+    {
+        // Check if a saved scene index exists
+        if (PlayerPrefs.HasKey("CurrentSceneIndex"))
+        {
+            int currentSceneIndex = PlayerPrefs.GetInt("CurrentSceneIndex");
+            SceneManager.LoadScene(currentSceneIndex); // Load the saved scene
+        }
+        else
+        {
+            Debug.Log("No saved game found.");
+            // Optionally, you can load a default scene or show a message to the player
+        }
+    }
+
     public void QuitGame()
     {
         Application.Quit();
