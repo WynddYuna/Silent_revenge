@@ -8,6 +8,12 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync(1);
+
+    PlayerPrefs.SetInt("UnlockedLevel", 1); // Reset to initial value
+    PlayerPrefs.SetInt("ReachedIndex", 0); // Optionally reset the reached index
+    PlayerPrefs.Save(); // Save the changes
+    Debug.Log("UnlockedLevel and ReachedIndex have been reset.");
+        
     }
 
     public void ContinueGame()
