@@ -828,11 +828,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 21eb90c7-26d2-48bf-addb-55a1e8c5f217
+  cloudProjectId: 80bff479-66d7-4658-815c-bf477885e5cb
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Silent_revenge
-  organizationId: malab0
+  projectName: LS:SR
+  organizationId: mrhaaaam
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
