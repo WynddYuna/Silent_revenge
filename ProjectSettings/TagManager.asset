@@ -7,6 +7,8 @@ TagManager:
   - Box
   - Checkpoint
   - Respawns
+  - UnlockTrigger
+  - Slider
   layers:
   - Default
   - TransparentFX

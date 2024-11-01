@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public Animator animator;
+    public GameObject unlockUICanvas; // Reference to the unlock UI
+    
 
     void Start()
     {
@@ -122,4 +124,37 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMovement = 0f; // Stop movement
     }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Check if the player has entered the trigger area
+        if (collision.CompareTag("UnlockTrigger"))
+        {
+            // Call a method to display the unlock UI
+            ShowUnlockUI();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // Check if the player has exited the trigger area
+        if (collision.CompareTag("UnlockTrigger"))
+        {
+            // Call a method to hide the unlock UI
+            HideUnlockUI();
+        }
+    }
+
+private void ShowUnlockUI()
+{
+    Debug.Log("Unlock UI Shown");
+    unlockUICanvas.SetActive(true); // Show the unlock UI
+}
+
+private void HideUnlockUI()
+{
+    Debug.Log("Unlock UI Hidden");
+    unlockUICanvas.SetActive(false); // Hide the unlock UI
+}
+
 }
