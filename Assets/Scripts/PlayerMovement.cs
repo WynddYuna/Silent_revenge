@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject unlockUICanvas; // Reference to the unlock UI
 
     void Start()
-    { 
+    {
         trailRenderer = GetComponent<TrailRenderer>();
         animator = GetComponent<Animator>();
     }
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown = 0.1f; // Dash cooldown
 
     bool isDashing;
-    bool canDash = true; 
+    bool canDash = true;
 
     TrailRenderer trailRenderer;
 
@@ -48,14 +48,15 @@ public class PlayerMovement : MonoBehaviour
     public float fallSpeedMultiplier = 2f; // Fall speed multiplier
 
     void Update()
-    { 
+    {
         animator.SetFloat("yVelocity", rb.velocity.y);
-        animator.SetFloat("magnitude", rb.velocity.magnitude);
+        animator.SetFloat("magnitude", Mathf.Abs(horizontalMovement)); // Use absolute value for magnitude
 
         if (isDashing)
         {
             return;
         }
+
         // Update the player's velocity based on horizontal movement
         rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
         GroundCheck();
@@ -79,6 +80,12 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
+
+        // If there is no horizontal movement, stop moving
+        if (horizontalMovement == 0)
+        {
+            StopMoving();
+        }
     }
 
     public void Dash(InputAction.CallbackContext context)
@@ -110,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSeconds(dashDuration);
 
-        rb.velocity = new Vector2(0f, rb.velocity.y);
+        rb.velocity = new Vector2(0f, rb.velocity.y); // Reset horizontal velocity after dash
 
         isDashing = false;
         trailRenderer.emitting = false;
@@ -127,11 +134,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                 jumpsRemaining--;
-                animator.SetTrigger("jump");
+                animator .SetTrigger("jump");
             }
             else if (context.canceled)
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb .velocity.y * 0.5f);
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
                 jumpsRemaining--;
                 animator.SetTrigger("jump");
             }
@@ -177,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
     public void StopMoving()
     {
         horizontalMovement = 0f; // Stop movement
+        animator.SetFloat("magnitude", 0f); // Reset animator magnitude
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

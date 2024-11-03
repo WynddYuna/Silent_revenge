@@ -7,10 +7,17 @@ public class Projectile : MonoBehaviour
     public GameObject explosion; // Explosion effect prefab
     public GameObject explosionTwo; // Second explosion effect prefab
 
+    private Vector2 direction; // Direction of the projectile
+
+    public void Initialize(Vector2 direction)
+    {
+        this.direction = direction.normalized; // Normalize the direction vector
+    }
+
     private void Update()
     {
-        // Move the projectile forward
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        // Move the projectile in the specified direction
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

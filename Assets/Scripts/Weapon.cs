@@ -34,7 +34,8 @@ public class Weapon : MonoBehaviour
 
                     // Instantiate the projectile
                     Debug.Log("Shooting projectile!");
-                    Instantiate(projectile, shotPoint.position, transform.rotation);
+                    GameObject newProjectile = Instantiate(projectile, shotPoint.position, transform.rotation);
+                    newProjectile.GetComponent<Projectile>().Initialize(difference); // Pass the direction to the projectile
                     timeBtwShots = startTimeBtwShots; // Reset the shot timer
                 }
             }
