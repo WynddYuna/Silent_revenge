@@ -13,11 +13,13 @@ public class LockpickPuzzle : MonoBehaviour
     public GameObject lockpickPanel; // Reference to the panel that contains the lockpicking UI
     public Button startButton; // Reference to the start button
     public Button unlockButton; // Reference to the unlock button
+    public Button closeButton; // Reference to the close button
 
     private float sliderSpeed = 0.5f; // Speed of the slider movement
     private bool isMovingRight = true; // Direction of slider movement
     private bool isUnlocked = false; // State of the lockpick puzzle
     private bool isPuzzleActive = false; // Track if the puzzle is active
+    private bool isPuzzleCompleted = false; // Track if the puzzle has been successfully completed
 
     private void Start()
     {
@@ -43,6 +45,7 @@ public class LockpickPuzzle : MonoBehaviour
         // Add listeners for buttons
         startButton.onClick.AddListener(StartPuzzle);
         unlockButton.onClick.AddListener(TryUnlock);
+        closeButton.onClick.AddListener(ClosePuzzle); // Add listener for close button
     }
 
     private void MoveSlider()
@@ -57,6 +60,12 @@ public class LockpickPuzzle : MonoBehaviour
 
     public void StartPuzzle()
     {
+        if (isPuzzleCompleted) // Check if the puzzle is already completed
+        {
+            Debug.Log("Puzzle already completed, cannot start again."); // Debug log
+            return; // Prevent starting the puzzle if already completed
+        }
+
         Debug.Log("Start Puzzle Clicked!"); // Confirm start
         lockpickPanel.SetActive(true); // Show the lockpicking UI
         feedbackText.text = "Pick the Lock"; // Reset feedback text
@@ -81,7 +90,7 @@ public class LockpickPuzzle : MonoBehaviour
 
         float sliderPos = timingSlider.value; // Slider's current value (0 to 1 range)
         float targetMin = targetZone.anchorMin.x; // Start of target zone
-        float targetMax = targetZone.anchorMax.x; // End of target zone
+                float targetMax = targetZone.anchorMax.x; // End of target zone
 
         Debug.Log($"Slider Position: {sliderPos}, Target Min: {targetMin}, Target Max: {targetMax}"); // Debug log
 
@@ -94,12 +103,11 @@ public class LockpickPuzzle : MonoBehaviour
             StartCoroutine(ShowSuccessMessage()); // Call method to show success feedback
             isUnlocked = true;
             isPuzzleActive = false; // Stop slider movement
-
-            // Do not close the puzzle immediately; wait for the coroutine to finish
+            isPuzzleCompleted = true; // Mark the puzzle as completed
         }
         else
         {
-                       // Player failed
+            // Player failed
             Debug.Log("Failed!"); // Log failure
             feedbackText.text = ""; // Clear feedback
             StartCoroutine(ShowTryAgainText()); // Show "Try Again!" and reset
@@ -143,11 +151,14 @@ public class LockpickPuzzle : MonoBehaviour
         ClosePuzzle();
     }
 
-    private void ClosePuzzle()
+    // Method to close the lockpick panel
+    public void ClosePuzzle()
     {
         lockpickPanel.SetActive(false); // Deactivate the lockpicking panel
         unlockButton.gameObject.SetActive(false); // Hide unlock button after closing the puzzle
         startButton.gameObject.SetActive(true); // Re-enable start button
         isPuzzleActive = false; // Reset puzzle state
+        isUnlocked = false; // Reset unlock state
+        isPuzzleCompleted = false; // Reset puzzle completion state
     }
 }
