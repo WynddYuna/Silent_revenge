@@ -5,8 +5,14 @@ using UnityEngine.UI; // Include this namespace to work with UI components
 
 public class MenuController : MonoBehaviour
 {
+
+    [SerializeField] public GameObject gui;
     public GameObject menuCanvas; // Reference to the menu canvas
     public Button menuButton; // Reference to the UI button
+    public GameObject[] otherCanvases; // Array of other canvases to close
+
+
+    private GameObject lastActiveCanvas; // Keep track of the last active canvas
 
     void Start()
     {
@@ -30,6 +36,48 @@ public class MenuController : MonoBehaviour
 
     void ToggleMenu()
     {
-        menuCanvas.SetActive(!menuCanvas.activeSelf); // Toggle the active state of the menu
+        bool isMenuActive = menuCanvas.activeSelf; // Check if the menu is currently active
+
+        if (!isMenuActive)
+        {
+            // Store the currently active canvas before opening the menu
+            lastActiveCanvas = GetActiveCanvas();
+            // Set the menu canvas active state
+            menuCanvas.SetActive(true);
+            // Close other canvases
+            CloseOtherCanvases();
+            gui.SetActive(false);
+        }
+        else
+        {
+            // Close the menu
+            menuCanvas.SetActive(false);
+            gui.SetActive(true);
+            // Reopen the last active canvas if it exists
+            if (lastActiveCanvas != null)
+            {
+                lastActiveCanvas.SetActive(true);
+            }
+        }
+    }
+
+    void CloseOtherCanvases()
+    {
+        foreach (GameObject canvas in otherCanvases)
+        {
+            canvas.SetActive(false); // Close each other canvas
+        }
+    }
+
+    GameObject GetActiveCanvas()
+    {
+        foreach (GameObject canvas in otherCanvases)
+        {
+            if (canvas.activeSelf)
+            {
+                return canvas; // Return the currently active canvas
+            }
+        }
+        return null; // No active canvas found
     }
 }
