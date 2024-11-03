@@ -8,9 +8,9 @@ using UnityEngine.SceneManagement;
 public class AuthController : MonoBehaviour
 {
     // Change these URLs to match your server's IP address and endpoint
-    public string registerUrl = "http://192.168.0.141/game_api/register.php"; 
-    public string loginUrl = "http://192.168.0.141/game_api/login.php"; 
-    public string deleteUrl = "http://192.168.0.141/game_api/delete.php"; 
+    public string registerUrl = "http://192.168.0.143/game_api/register.php"; 
+    public string loginUrl = "http://192.168.0.143/game_api/login.php"; 
+    public string deleteUrl = "http://192.168.0.143/game_api/delete.php"; 
 
     public TMP_InputField UsernameInput; 
     public TMP_InputField PasswordInput; 
