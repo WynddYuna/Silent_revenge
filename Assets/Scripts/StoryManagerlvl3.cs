@@ -10,10 +10,10 @@ public class StoryManagerlvl3 : MonoBehaviour
 
     private int currentIndex = 0; // Current index of the storyline
     private string[] storyLines = {
-        "Your in Level 3 right now",
-        "You may have to risk your Life, for there are bear traps around the Haunted Forest",
-        "Youll find some obstacles that you must get through",
-        "Your Goal is to find your way to the Haunted House where the Unkown Entity Resides"
+        "*Your in Level 3 right now*",
+        "You may have to risk your Life**#?, for there are bear traps around the Haunted Forest!",
+        "Youll find some obstacles,BUT you must get through##!",
+        "Your Goal is to find your way to the Haunted House where the Unkown Entity Resides!!!"
     };
 
     void Start()
