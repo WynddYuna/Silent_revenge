@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour
 {
     public int health = 100; // Boss health
-    public int damage; // Damage dealt to the player
+    public int damage = 10; // Damage dealt to the player
     private float timeBtwDamage = 1.5f; // Time between damage to the player
     public Animator camAnim; // Reference to the camera animator
     public Slider healthBar; // UI health bar reference
@@ -71,7 +71,8 @@ public class Boss : MonoBehaviour
         Destroy(gameObject); // Destroy boss game object
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    // Change access modifier to public
+    public void OnTriggerEnter2D(Collider2D other)
     {
         // Deal damage to the player
         if (other.CompareTag("Player") && !isDead) 
