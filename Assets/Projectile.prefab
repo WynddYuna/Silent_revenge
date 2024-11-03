@@ -182,14 +182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0cad45e6c5b4449bb1ee1db61c6f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 5
   speed: 15
-  lifeTime: 0.8
-  distance: 0.5
-  damage: 1
-  whatIsSolid:
-    serializedVersion: 2
-    m_Bits: 64
-  destroyEffect: {fileID: 1657798570406232, guid: de5b4e37e82a9714581a9ed2bbee02d5, type: 3}
+  explosion: {fileID: 1214371818292734, guid: ce89330ced493414e838cde474590063, type: 3}
+  explosionTwo: {fileID: 1900874806143164, guid: 2a98e6e4a8e9ba746998cbad9ecdeb21, type: 3}
 --- !u!50 &5927670854316746655
 Rigidbody2D:
   serializedVersion: 4
@@ -246,7 +242,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

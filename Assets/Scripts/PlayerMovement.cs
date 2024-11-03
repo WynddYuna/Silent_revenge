@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public Animator animator;
+    public int health = 100; // Player health
+    public Rigidbody2D rb; // Player rigidbody
+    public Animator animator; // Player animator
     public GameObject unlockUICanvas; // Reference to the unlock UI
 
     void Start()
@@ -18,13 +19,13 @@ public class PlayerMovement : MonoBehaviour
     bool isFacingRight = true;
 
     [Header("Movement")]
-    public float moveSpeed = 5f;
+    public float moveSpeed = 5f; // Player movement speed
     private float horizontalMovement; // Keep this private
 
     [Header("Dashing")]
-    public float dashSpeed = 1000f;
-    public float dashDuration = 1f;
-    public float dashCooldown = 0.1f;
+    public float dashSpeed = 1000f; // Dash speed
+    public float dashDuration = 1f; // Dash duration
+    public float dashCooldown = 0.1f; // Dash cooldown
 
     bool isDashing;
     bool canDash = true; 
@@ -32,19 +33,19 @@ public class PlayerMovement : MonoBehaviour
     TrailRenderer trailRenderer;
 
     [Header("Jumping")]
-    public float jumpPower = 10f;
-    public int maxJumps = 2;
+    public float jumpPower = 10f; // Jump power
+    public int maxJumps = 2; // Maximum jumps
     private int jumpsRemaining;
 
     [Header("GroundCheck")]
-    public Transform groundCheckPos;
-    public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f);
-    public LayerMask groundLayer;
+    public Transform groundCheckPos; // Ground check position
+    public Vector2 groundCheckSize = new Vector2(0.5f, 0.05f); // Ground check size
+    public LayerMask groundLayer; // Ground layer
 
     [Header("Gravity")]
-    public float baseGravity = 2f;
-    public float maxFallSpeed = 18f;
-    public float fallSpeedMultiplier = 2f;
+    public float baseGravity = 2f; // Base gravity
+    public float maxFallSpeed = 18f; // Maximum fall speed
+    public float fallSpeedMultiplier = 2f; // Fall speed multiplier
 
     void Update()
     { 
@@ -130,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (context.canceled)
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                rb.velocity = new Vector2(rb.velocity.x, rb .velocity.y * 0.5f);
                 jumpsRemaining--;
                 animator.SetTrigger("jump");
             }

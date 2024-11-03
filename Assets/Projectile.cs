@@ -1,36 +1,44 @@
-﻿using System.Collections; using System.Collections.Generic; using UnityEngine;
+﻿using UnityEngine;
 
-public class Projectile : MonoBehaviour {
-
-public float speed;
-public float lifeTime;
-public float distance;
-public int damage;
-public LayerMask whatIsSolid;
-
-public GameObject destroyEffect;
-
-private void Start()
+public class Projectile : MonoBehaviour
 {
-    Invoke("DestroyProjectile", lifeTime);
-}
+    public int damage = 10; // Damage dealt to the boss
+    public float speed = 10f; // Speed of the projectile
+    public GameObject explosion; // Explosion effect prefab
+    public GameObject explosionTwo; // Second explosion effect prefab
 
-private void Update()
-{
-    RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
-    if (hitInfo.collider != null) {
-        if (hitInfo.collider.CompareTag("Enemy")) {
-            hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
-        }
-        DestroyProjectile();
+    private void Update()
+    {
+        // Move the projectile forward
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Projectile collided with: " + other.name); // Log what the projectile collides with
 
-    transform.Translate(Vector2.up * speed * Time.deltaTime);
-}
+        // Check if the projectile hits the boss
+        if (other.CompareTag("Boss")) 
+        {
+            Debug.Log("Hit the Boss!"); // Confirm it's hitting the boss
+            
+            // Call TakeDamage on the boss
+            Boss boss = other.GetComponent<Boss>();
+            if (boss != null)
+            {
+                boss.TakeDamage(damage); // Use the TakeDamage method
+            }
 
-void DestroyProjectile() {
-    Instantiate(destroyEffect, transform.position, Quaternion.identity);
-    Destroy(gameObject);
-}
+            // Instantiate explosion effects
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Instantiate(explosionTwo, transform.position, Quaternion.identity);
+
+            // Destroy the projectile
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("Ground")) // Optional: Destroy projectile on hitting the ground
+        {
+            Destroy(gameObject);
+        }
+    }
 }
