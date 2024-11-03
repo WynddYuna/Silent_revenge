@@ -8,10 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public GameObject unlockUICanvas; // Reference to the unlock UI
-    
 
     void Start()
-    {
+    { 
+        trailRenderer = GetComponent<TrailRenderer>();
         animator = GetComponent<Animator>();
     }
 
@@ -20,6 +20,16 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 5f;
     private float horizontalMovement; // Keep this private
+
+    [Header("Dashing")]
+    public float dashSpeed = 1000f;
+    public float dashDuration = 1f;
+    public float dashCooldown = 0.1f;
+
+    bool isDashing;
+    bool canDash = true; 
+
+    TrailRenderer trailRenderer;
 
     [Header("Jumping")]
     public float jumpPower = 10f;
@@ -37,14 +47,19 @@ public class PlayerMovement : MonoBehaviour
     public float fallSpeedMultiplier = 2f;
 
     void Update()
-    {
+    { 
+        animator.SetFloat("yVelocity", rb.velocity.y);
+        animator.SetFloat("magnitude", rb.velocity.magnitude);
+
+        if (isDashing)
+        {
+            return;
+        }
         // Update the player's velocity based on horizontal movement
         rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
         GroundCheck();
         Gravity();
         Flip();
-        animator.SetFloat("yVelocity", rb.velocity.y);
-        animator.SetFloat("magnitude", rb.velocity.magnitude);
     }
 
     private void Gravity()
@@ -63,6 +78,44 @@ public class PlayerMovement : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
+    }
+
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if (context.performed && canDash)
+        {
+            StartCoroutine(DashCoroutine());
+        }
+    }
+
+    public void DashButton()
+    {
+        if (canDash)
+        {
+            StartCoroutine(DashCoroutine());
+        }
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        canDash = false;
+        isDashing = true;
+
+        trailRenderer.emitting = true;
+
+        float dashDirection = isFacingRight ? 1f : -1f;
+
+        rb.velocity = new Vector2(dashDirection * dashSpeed, rb.velocity.y);
+
+        yield return new WaitForSeconds(dashDuration);
+
+        rb.velocity = new Vector2(0f, rb.velocity.y);
+
+        isDashing = false;
+        trailRenderer.emitting = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -125,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalMovement = 0f; // Stop movement
     }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the player has entered the trigger area
         if (collision.CompareTag("UnlockTrigger"))
@@ -145,16 +198,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-private void ShowUnlockUI()
-{
-    Debug.Log("Unlock UI Shown");
-    unlockUICanvas.SetActive(true); // Show the unlock UI
-}
+    private void ShowUnlockUI()
+    {
+        Debug.Log("Unlock UI Shown");
+        unlockUICanvas.SetActive(true); // Show the unlock UI
+    }
 
-private void HideUnlockUI()
-{
-    Debug.Log("Unlock UI Hidden");
-    unlockUICanvas.SetActive(false); // Hide the unlock UI
-}
-
+    private void HideUnlockUI()
+    {
+        Debug.Log("Unlock UI Hidden");
+        unlockUICanvas.SetActive(false); // Hide the unlock UI
+    }
 }
