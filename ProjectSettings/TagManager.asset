@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Boss
   - Ground
+  - UI
   layers:
   - Default
   - TransparentFX
