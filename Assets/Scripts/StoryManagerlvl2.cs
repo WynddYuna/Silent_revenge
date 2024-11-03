@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class StoryManager : MonoBehaviour
+public class StoryManagerlvl2 : MonoBehaviour
 {
     public TextMeshProUGUI storyText; // Reference to the TextMeshPro component
     public Button nextButton; // Reference to the Next button
