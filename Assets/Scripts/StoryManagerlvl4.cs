@@ -10,11 +10,11 @@ public class StoryManagerlvl4 : MonoBehaviour
 
     private int currentIndex = 0; // Current index of the storyline
     private string[] storyLines = {
-        "*Your in Level 4 right now*",
-        "In this level you dont need to worry about dying#???",
+        "Your in Level 4 right now",
+        "In this level you dont need to worry about dying???",
         "You can see a House on your way there. An abandon House!!!",
         "And on your way to the house youll face some puzzles that will test your mind that ever puzzle you solve, a DOOR will open!!!",
-        "Your Goal is to solve all the puzzles and find some traces of your sist#r!??"
+        "Your Goal is to solve all the puzzles and find some traces of your sister!??"
     };
 
     void Start()
