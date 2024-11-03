@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OpenUserManagementLink : MonoBehaviour // Corrected class name
 {
@@ -9,5 +10,6 @@ public class OpenUserManagementLink : MonoBehaviour // Corrected class name
     public void OpenLink()
     {
         Application.OpenURL(userManagementUrl);
+        SceneManager.LoadSceneAsync(1);
     }
 }
