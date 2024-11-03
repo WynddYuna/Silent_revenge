@@ -10,6 +10,9 @@ public class JigsawController : MonoBehaviour
     private GameObject WinText; // UI text for win message
 
     [SerializeField]
+    private GameObject FeedbackText; // UI for feedback text
+    
+    [SerializeField]
     private GameObject puzzlePanel; // Panel containing the puzzle pieces
 
     public JigsawTrigger jigsawTrigger; // Reference to the JigsawTrigger component
@@ -20,6 +23,7 @@ public class JigsawController : MonoBehaviour
     void Start()
     {
         WinText.SetActive(false); // Hide win text initially
+        FeedbackText.SetActive(true); // Show feedback text at the start
         youWin = false; // Initialize win state
 
         // Check if the puzzle has already been completed
@@ -54,6 +58,7 @@ public class JigsawController : MonoBehaviour
 
     private IEnumerator ShowWinTextAndHidePuzzle()
     {
+        FeedbackText.SetActive(false); // Hide feedback text before showing win text
         ShowWinText(); // Show win text
         Debug.Log("Win Text Displayed."); // Debug log
         yield return new WaitForSeconds(2f); // Wait for 2 seconds (or any duration you want)
@@ -63,6 +68,8 @@ public class JigsawController : MonoBehaviour
     private void HidePuzzle()
     {
         puzzlePanel.SetActive(false); // Hide the panel containing the puzzle pieces
+        WinText.SetActive(false); // Hide the win text
+        FeedbackText.SetActive(false); // Hide the feedback text
         puzzleCompleted = true; // Set puzzle completed to true
         jigsawTrigger.CompletePuzzle(); // Call the CompletePuzzle method on the JigsawTrigger instance
         Debug.Log("Puzzle is now hidden and marked as completed."); // Debug log
