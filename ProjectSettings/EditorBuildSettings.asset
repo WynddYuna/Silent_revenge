@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Login in website.unity
     guid: ecf5207cd16afe4499daf5dcd5655000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: c09164202cdcc8c4d8d5aa0da2e1ae22
   - enabled: 0
@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/copy ng lvl 2.unity
     guid: 8f2350fe87a78fd40baa7745ed2b8982
+  - enabled: 1
+    path: Assets/Scenes/Level 5.unity
+    guid: 6315edc3de57b9d4eaa0fc43a94bddad
   m_configObjects: {}
