@@ -9,7 +9,7 @@ public class SaveAndQuitButton : MonoBehaviour
         SaveGameState();
         // Quit the game
         //Application.Quit();
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(1);
 
 #if UNITY_EDITOR
         // Exit play mode in the editor
