@@ -27460,16 +27460,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 138, y: 5, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 6
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 155, y: 5, z: 0}
     second:
       serializedVersion: 2
@@ -39968,7 +39958,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 472d392e7fab4d74aa33c5f7d883ec78, type: 2}
   - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 2e55f988ef6a85545b4d58caf25aaafa, type: 2}
-  - m_RefCount: 3849
+  - m_RefCount: 3848
     m_Data: {fileID: 11400000, guid: 7498f33308d5c14468dd8a1814090012, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 3b5fea47eb16edf41afc3972ca69413e, type: 2}
@@ -39985,14 +39975,14 @@ Tilemap:
     m_Data: {fileID: 496321938, guid: 09f9d40e0e6cc714e87ba0a0ee29b07d, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -1949842241, guid: 09f9d40e0e6cc714e87ba0a0ee29b07d, type: 3}
-  - m_RefCount: 3849
+  - m_RefCount: 3848
     m_Data: {fileID: 1028518168, guid: 09f9d40e0e6cc714e87ba0a0ee29b07d, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -1170013168, guid: 09f9d40e0e6cc714e87ba0a0ee29b07d, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 276997418, guid: 09f9d40e0e6cc714e87ba0a0ee29b07d, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 3904
+  - m_RefCount: 3903
     m_Data:
       e00: 1
       e01: 0
@@ -40011,7 +40001,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 3904
+  - m_RefCount: 3903
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -40330,14 +40320,6 @@ CompositeCollider2D:
         Y: 87100192
       - X: 844922944
         Y: 87100192
-    - - X: 1449680640
-        Y: 54930788
-      - X: 1438558464
-        Y: 54930788
-      - X: 1438558464
-        Y: 45219264
-      - X: 1449680640
-        Y: 45219264
     - - X: 1516412416
         Y: 18512586
       - X: 1516412416
@@ -40463,10 +40445,6 @@ CompositeCollider2D:
       - {x: 84.49226, y: 9.134898}
       - {x: 80.25204, y: 9.134869}
       - {x: 80.25207, y: 8.710019}
-    - - {x: 144.96803, y: 4.5219264}
-      - {x: 144.96803, y: 5.4930787}
-      - {x: 143.85585, y: 5.4930496}
-      - {x: 143.85588, y: 4.5219264}
     - - {x: 157.27176, y: 1.8512881}
       - {x: 151.64125, y: 1.8512881}
       - {x: 151.64125, y: 2.701024}
@@ -43117,6 +43095,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   unlockUICanvas: {fileID: 286018133}
   moveSpeed: 5
+  dashSpeed: 1000
+  dashDuration: 1
+  dashCooldown: 0.1
   jumpPower: 10
   maxJumps: 2
   groundCheckPos: {fileID: 1060839938}
