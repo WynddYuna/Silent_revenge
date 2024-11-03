@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class JigsawController : MonoBehaviour
@@ -16,18 +15,23 @@ public class JigsawController : MonoBehaviour
     public JigsawTrigger jigsawTrigger; // Reference to the JigsawTrigger component
 
     public static bool youWin; // Static variable to track win state
-    private bool puzzleVisible = true; // Track if the puzzle is visible
-    private bool puzzleCompleted = false; // Track if the puzzle has been completed
+    private static bool puzzleCompleted = false; // Static variable to track if the puzzle is completed
 
     void Start()
     {
         WinText.SetActive(false); // Hide win text initially
         youWin = false; // Initialize win state
+
+        // Check if the puzzle has already been completed
+        if (puzzleCompleted)
+        {
+            HidePuzzle(); // Hide the puzzle if completed
+        }
     }
 
     void Update()
     {
-        if (puzzleVisible && !puzzleCompleted && AreAllPiecesAligned()) // Check if puzzle is visible, not completed, and pieces are aligned
+        if (!puzzleCompleted && AreAllPiecesAligned()) // Check if puzzle is not completed and pieces are aligned
         {
             youWin = true; // Set win state
             Debug.Log("Puzzle Completed! Showing Win Text."); // Debug log
@@ -57,13 +61,12 @@ public class JigsawController : MonoBehaviour
     }
 
     private void HidePuzzle()
-{
-    puzzlePanel.SetActive(false); // Hide the panel containing the puzzle pieces
-    puzzleVisible = false; // Set puzzle visibility to false
-    puzzleCompleted = true; // Set puzzle completed to true
-    jigsawTrigger.CompletePuzzle(); // Call the CompletePuzzle method on the JigsawTrigger instance
-    Debug.Log("Puzzle is now hidden and marked as completed."); // Debug log
-}
+    {
+        puzzlePanel.SetActive(false); // Hide the panel containing the puzzle pieces
+        puzzleCompleted = true; // Set puzzle completed to true
+        jigsawTrigger.CompletePuzzle(); // Call the CompletePuzzle method on the JigsawTrigger instance
+        Debug.Log("Puzzle is now hidden and marked as completed."); // Debug log
+    }
 
     private void ShowWinText()
     {
