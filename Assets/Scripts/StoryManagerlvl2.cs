@@ -10,11 +10,10 @@ public class StoryManagerlvl2 : MonoBehaviour
 
     private int currentIndex = 0; // Current index of the storyline
     private string[] storyLines = {
-        "*Your in Level 2 right now*",
-        "Your Objective is to find clues that might be the whereabouts of your sistr is???",
-        "The clues is scattered around the village!",
-        "You Must Hurry, HUuuRYY!!!",
-        "After you've collected the papers, then you are ready to proceed to the next level!"
+        "Your in Level 2 right now",
+        "You need to find clues that point where your sister is!!!",
+        "The clues is scattered around the village",
+        "After you collected the papers, then you are ready to proceed to the next level!"
     };
 
     void Start()
