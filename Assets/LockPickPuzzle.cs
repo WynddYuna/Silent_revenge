@@ -14,6 +14,9 @@ public class LockpickPuzzle : MonoBehaviour
     public Button startButton; // Reference to the start button
     public Button unlockButton; // Reference to the unlock button
     public Button closeButton; // Reference to the close button
+  
+    [SerializeField]
+    private GameObject Gate;
 
     private float sliderSpeed = 0.5f; // Speed of the slider movement
     private bool isMovingRight = true; // Direction of slider movement
@@ -24,6 +27,7 @@ public class LockpickPuzzle : MonoBehaviour
     private void Start()
     {
         InitializePuzzle();
+        Gate.SetActive(true);
     }
 
     private void Update()
@@ -32,6 +36,7 @@ public class LockpickPuzzle : MonoBehaviour
         {
             MoveSlider();
         }
+
     }
 
     private void InitializePuzzle()
@@ -142,11 +147,14 @@ public class LockpickPuzzle : MonoBehaviour
             successText.SetActive(true); // Show the success text
             yield return new WaitForSeconds(1.5f); // Wait for a duration to display the message
             successText.SetActive(false); // Hide the success text after the delay
+
+
         }
+        
 
         feedbackText.text = "Pick the Lock"; // Reset feedback text after success
         feedbackText.gameObject.SetActive(true); // Re-show feedback text
-
+        Gate.SetActive(false);
         // Close the puzzle after showing the success message
         ClosePuzzle();
     }
@@ -161,4 +169,6 @@ public class LockpickPuzzle : MonoBehaviour
         isUnlocked = false; // Reset unlock state
         isPuzzleCompleted = false; // Reset puzzle completion state
     }
+
+    
 }
