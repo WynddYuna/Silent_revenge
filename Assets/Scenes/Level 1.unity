@@ -4064,7 +4064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9333f07db519a1c45bfc3bf723f096fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gui: {fileID: 0}
+  gui: {fileID: 1512343656}
   menuCanvas: {fileID: 962284673}
   menuButton: {fileID: 624627177}
   otherCanvases: []
