@@ -774,7 +774,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &246736327
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30820,7 +30820,7 @@ MonoBehaviour:
   unlockUICanvas: {fileID: 0}
   KBCounter: 0
   KBForce: 5
-  KBTotalTime: 0.3
+  KBTotalTime: 0.4
   KnockFromRight: 0
   moveSpeed: 5
   dashSpeed: 50
