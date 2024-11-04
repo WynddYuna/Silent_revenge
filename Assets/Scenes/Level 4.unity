@@ -2750,6 +2750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gui: {fileID: 1926990588}
+  Bar: {fileID: 0}
   menuCanvas: {fileID: 1248200541}
   menuButton: {fileID: 1937832372}
   otherCanvases: []
@@ -2967,7 +2968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 29, y: 379}
+  m_AnchoredPosition: {x: 29, y: 518}
   m_SizeDelta: {x: 1819.2565, y: 148.5848}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &535290690
@@ -49002,6 +49003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseButton: {fileID: 1937832372}
+  playerMovement: {fileID: 0}
 --- !u!4 &1522465941
 Transform:
   m_ObjectHideFlags: 0
@@ -49780,7 +49782,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 29, y: 379}
+  m_AnchoredPosition: {x: 29, y: 541}
   m_SizeDelta: {x: 1819.2565, y: 148.5848}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595234799
@@ -52317,6 +52319,10 @@ MonoBehaviour:
   rb: {fileID: 2037881661}
   animator: {fileID: 0}
   unlockUICanvas: {fileID: 286018133}
+  KBCounter: 0
+  KBForce: 0
+  KBTotalTime: 0
+  KnockFromRight: 0
   moveSpeed: 5
   dashSpeed: 1000
   dashDuration: 1

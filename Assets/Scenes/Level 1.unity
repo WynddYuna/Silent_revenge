@@ -3458,7 +3458,7 @@ GameObject:
   - component: {fileID: 104075770}
   - component: {fileID: 104075769}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: InstructionsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4067,6 +4067,7 @@ MonoBehaviour:
   gui: {fileID: 1512343656}
   Bar: {fileID: 0}
   menuCanvas: {fileID: 962284673}
+  InstructionsText: {fileID: 0}
   menuButton: {fileID: 624627177}
   otherCanvases: []
 --- !u!114 &213351659
@@ -6268,7 +6269,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12837553, y: 5.3723826, z: -10}
+  m_LocalPosition: {x: 0.50533915, y: 5.371255, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
