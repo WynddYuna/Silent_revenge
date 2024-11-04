@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Add this line to include scene management
 
 public class Boss : MonoBehaviour
 {
@@ -68,7 +69,19 @@ public class Boss : MonoBehaviour
     {
         // Handle boss death (e.g., play animation, drop loot)
         Debug.Log("Destroying boss game object."); // Debug log
+        
+        // Start a coroutine to wait for the animation to finish before loading the main menu
+        StartCoroutine(DieAndLoadMenuCoroutine());
+    }
+
+    private IEnumerator DieAndLoadMenuCoroutine()
+    {
+        // Wait for a few seconds to allow the death animation to play
+        yield return new WaitForSeconds(2f); // Adjust time as needed
         Destroy(gameObject); // Destroy boss game object
+
+        // Load the main menu scene
+        SceneManager.LoadScene("Main Menu"); // Use the exact name of your main menu scene
     }
 
     // Change access modifier to public

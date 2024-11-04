@@ -6105,7 +6105,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12846184, y: 5.3723826, z: -10}
+  m_LocalPosition: {x: 29.039043, y: -5.692346, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10252,7 +10252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &696800940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10297,7 +10297,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 2.3453517, y: 2.9868731}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -10308,7 +10308,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.35, y: 2.03}
+  m_Size: {x: 7.040704, y: 8.003749}
   m_EdgeRadius: 0
 --- !u!212 &696800942
 SpriteRenderer:
@@ -10348,8 +10348,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1796523505
-  m_SortingLayer: 4
+  m_SortingLayerID: 1835124867
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5c9eb29ea7eaaf344b80b4b22b1cb965, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10371,8 +10371,8 @@ Transform:
   m_GameObject: {fileID: 696800939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.16, y: -8.49, z: 0}
-  m_LocalScale: {x: 1.02, y: 3.63, z: 1}
+  m_LocalPosition: {x: 21.88, y: -8.9, z: 0}
+  m_LocalScale: {x: 0.22951882, y: 0.7148603, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -19330,7 +19330,7 @@ Transform:
   m_GameObject: {fileID: 1822484226}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1, y: 5.4505, z: -10}
+  m_LocalPosition: {x: 26.9, y: -9.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21759,7 +21759,7 @@ Transform:
   m_GameObject: {fileID: 2037881659}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1, y: 5.4505, z: 0}
+  m_LocalPosition: {x: 26.9, y: -9.8, z: 0}
   m_LocalScale: {x: 0.22286513, y: 0.17492422, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21897,6 +21897,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 74230e48-e7ec-4b6f-bda2-0727384799b4
     m_ActionName: Player/Hold[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9b381c5f-42d3-4485-8d41-9f41e8aa3a2c
+    m_ActionName: Player/Dash[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
