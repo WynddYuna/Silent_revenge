@@ -8,7 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public int health = 100; // Player health
     public Rigidbody2D rb; // Player rigidbody
     public Animator animator; // Player animator
-    public GameObject unlockUICanvas; // Reference to the unlock UI
+    public GameObject unlockUICanvas;
+    
+    
+    public float KBCounter;
+    public float KBForce;
+     public float KBTotalTime;
+    public bool KnockFromRight;
+     // Reference to the unlock UI
 
     void Start()
     {
@@ -17,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     bool isFacingRight = true;
+    private bool canMove = true; // New flag to control movement
 
     [Header("Movement")]
     public float moveSpeed = 5f; // Player movement speed
@@ -49,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!canMove) return; // Stop all movement and actions if canMove is false
+
         animator.SetFloat("yVelocity", rb.velocity.y);
         animator.SetFloat("magnitude", Mathf.Abs(horizontalMovement)); // Use absolute value for magnitude
 
@@ -56,9 +66,23 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+  if(KBCounter <= 0){
 
+             rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
+        }else{
+
+            if(KnockFromRight==true){
+                rb.velocity=new Vector2(-KBForce,KBForce);
+    
+            }
+            if(KnockFromRight==false){
+                rb.velocity=new Vector2(KBForce,KBForce);
+
+            }
+            KBCounter -= Time.deltaTime;
+        }
         // Update the player's velocity based on horizontal movement
-        rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
+        
         GroundCheck();
         Gravity();
         Flip();
@@ -79,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (!canMove) return; // Stop move input if canMove is false
+
         horizontalMovement = context.ReadValue<Vector2>().x;
 
         // If there is no horizontal movement, stop moving
@@ -90,6 +116,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
+        if (!canMove) return; // Stop dash input if canMove is false
+
         if (context.performed && canDash)
         {
             StartCoroutine(DashCoroutine());
@@ -98,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void DashButton()
     {
-        if (canDash)
+        if (canMove && canDash) // Check canMove flag before dashing
         {
             StartCoroutine(DashCoroutine());
         }
@@ -128,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (jumpsRemaining > 0 && context.performed)
+        if (canMove && jumpsRemaining > 0 && context.performed)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             jumpsRemaining--;
@@ -156,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
- private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
@@ -165,12 +193,12 @@ public class PlayerMovement : MonoBehaviour
     // New methods for button integration
     public void MoveLeft()
     {
-        horizontalMovement = -1f; // Set to move left
+        if (canMove) horizontalMovement = -1f; // Set to move left
     }
 
     public void MoveRight()
     {
-        horizontalMovement = 1f; // Set to move right
+        if (canMove) horizontalMovement = 1f; // Set to move right
     }
 
     public void StopMoving()
@@ -210,4 +238,10 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Unlock UI Hidden");
         unlockUICanvas.SetActive(false); // Hide the unlock UI
     }
-} 
+
+    // Method to enable or disable player movement
+    public void SetCanMove(bool move)
+    {
+        canMove = move;
+    }
+}
