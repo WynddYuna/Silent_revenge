@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 455436576}
   - component: {fileID: 455436577}
   m_Layer: 0
-  m_Name: Timeline 3
+  m_Name: Timeline 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeTime: 4
-  sceneName: Level 3
+  sceneName: Level 2
 --- !u!4 &1000298825
 Transform:
   m_ObjectHideFlags: 0
@@ -562,14 +562,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.17943034, g: 0.26574504, b: 0.2981131, a: 1}
+  m_Color: {r: 0.35545027, g: 0.45034224, b: 0.4867924, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cec0f7ba8aaa485478aad14e224315f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74e8eaa433ec57a4d839d6048fb91fb7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
