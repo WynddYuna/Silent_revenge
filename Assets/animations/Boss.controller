@@ -184,6 +184,7 @@ MonoBehaviour:
   maxTime: 3.5
   speed: 8
   attackDistance: 0
+  jumpForce: 0
 --- !u!114 &-4251112559521071534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,7 +200,8 @@ MonoBehaviour:
   minTime: 1
   maxTime: 2.5
   speed: 7
-  attackDistance: 0
+  attackDistance: 0.5
+  jumpForce: 10
 --- !u!1102 &-1860329080588194254
 AnimatorState:
   serializedVersion: 6
