@@ -14,6 +14,8 @@ public class Boss : MonoBehaviour
     private Animator anim; // Animator for the boss
     public bool isDead = false; // Check if the boss is dead
 
+    public PlayerMovement playerMovement;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -87,15 +89,48 @@ public class Boss : MonoBehaviour
     // Change access modifier to public
     public void OnTriggerEnter2D(Collider2D other)
     {
+
+        
+
+
+
+        
         // Deal damage to the player
         if (other.CompareTag("Player") && !isDead) 
         {
             if (timeBtwDamage <= 0) 
             {
-                camAnim.SetTrigger("shake");
+               
                 other.GetComponent<PlayerMovement>().health -= damage; // Damage player
                 timeBtwDamage = 1.5f; // Reset damage timing
             }
         } 
+    }
+
+    private void OnCollisionEnter2D (Collision2D collision){
+
+
+
+        if(collision.gameObject.tag=="Player")
+        {
+
+             playerMovement.KBCounter =playerMovement.KBTotalTime;
+             if(collision.transform.position.x <= transform.position.x)
+             {
+
+             }
+
+             playerMovement.KnockFromRight=true;
+
+        }
+             playerMovement.KBCounter =playerMovement.KBTotalTime;
+             if(collision.transform.position.x > transform.position.x)
+             {
+
+             }
+
+             playerMovement.KnockFromRight=false;
+
+        
     }
 }
