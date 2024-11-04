@@ -128,20 +128,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (jumpsRemaining > 0)
+        if (jumpsRemaining > 0 && context.performed)
         {
-            if (context.performed)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-                jumpsRemaining--;
-                animator .SetTrigger("jump");
-            }
-            else if (context.canceled)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-                jumpsRemaining--;
-                animator.SetTrigger("jump");
-            }
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            jumpsRemaining--;
+            animator.SetTrigger("jump");
         }
     }
 
@@ -150,6 +141,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
         {
             jumpsRemaining = maxJumps;
+            Debug.Log("Grounded - Jumps reset to: " + jumpsRemaining);
         }
     }
 
@@ -164,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+ private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(groundCheckPos.position, groundCheckSize);
