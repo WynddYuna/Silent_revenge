@@ -703,7 +703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429180301569763708, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: worth
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8597799221619550192, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: m_Name
@@ -2718,7 +2718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429180301569763708, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: worth
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8597799221619550192, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: m_Name
@@ -6600,7 +6600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429180301569763708, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: worth
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8597799221619550192, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: m_Name
@@ -7969,7 +7969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429180301569763708, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: worth
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8597799221619550192, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: m_Name
@@ -44520,7 +44520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2034763479131219924, guid: 503c670ddcb09a4479fc7ff31e06355f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.438
+      value: -13.1
       objectReference: {fileID: 0}
     - target: {fileID: 2034763479131219924, guid: 503c670ddcb09a4479fc7ff31e06355f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -44557,6 +44557,10 @@ PrefabInstance:
     - target: {fileID: 2669780078082278448, guid: 503c670ddcb09a4479fc7ff31e06355f, type: 3}
       propertyPath: m_Name
       value: Spikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 6329665387037259488, guid: 503c670ddcb09a4479fc7ff31e06355f, type: 3}
+      propertyPath: damageAmount
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45140,7 +45144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429180301569763708, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: worth
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8597799221619550192, guid: eec64410f5c9c644abbbf41aa38f1dfd, type: 3}
       propertyPath: m_Name
