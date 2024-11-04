@@ -53,16 +53,23 @@ public class LockpickPuzzle : MonoBehaviour
         closeButton.onClick.AddListener(ClosePuzzle); // Add listener for close button
     }
 
-    private void MoveSlider()
+ private void MoveSlider()
+{
+    // Move the slider back and forth continuously
+    timingSlider.value += (isMovingRight ? sliderSpeed : -sliderSpeed) * Time.deltaTime;
+
+    // Change direction at ends without delay
+    if (timingSlider.value >= 1)
     {
-        // Move the slider back and forth
-        timingSlider.value += (isMovingRight ? sliderSpeed : -sliderSpeed) * Time.deltaTime;
-
-        // Change direction at ends
-        if (timingSlider.value >= 1) isMovingRight = false;
-        if (timingSlider.value <= 0) isMovingRight = true;
+        isMovingRight = false; // Change direction to left
+        timingSlider.value = 1; // Clamp the value to the maximum
     }
-
+    else if (timingSlider.value <= 0)
+    {
+        isMovingRight = true; // Change direction to right
+        timingSlider.value = 0; // Clamp the value to the minimum
+    }
+}
     public void StartPuzzle()
     {
         if (isPuzzleCompleted) // Check if the puzzle is already completed
@@ -84,42 +91,41 @@ public class LockpickPuzzle : MonoBehaviour
     }
 
     public void TryUnlock()
+{
+    Debug.Log("Unlock Button Clicked!"); // Check if the button click registers
+
+    if (isUnlocked || !isPuzzleActive)
     {
-        Debug.Log("Unlock Button Clicked!"); // Check if the button click registers
-
-        if (isUnlocked || !isPuzzleActive)
-        {
-            Debug.Log(isUnlocked ? "Already unlocked!" : "Puzzle is not active!");
-            return; // Prevent further action if already unlocked or puzzle is not active
-        }
-
-        float sliderPos = timingSlider.value; // Slider's current value (0 to 1 range)
-        float targetMin = targetZone.anchorMin.x; // Start of target zone
-                float targetMax = targetZone.anchorMax.x; // End of target zone
-
-        Debug.Log($"Slider Position: {sliderPos}, Target Min: {targetMin}, Target Max: {targetMax}"); // Debug log
-
-        // Check if within target zone with a margin of error for better feedback
-        float marginOfError = 0.05f; // Adjust this value for more or less forgiveness
-        if (sliderPos >= targetMin - marginOfError && sliderPos <= targetMax + marginOfError)
-        {
-            // Player succeeded
-            feedbackText.gameObject.SetActive(false); // Hide feedback text when success
-            StartCoroutine(ShowSuccessMessage()); // Call method to show success feedback
-            isUnlocked = true;
-            isPuzzleActive = false; // Stop slider movement
-            isPuzzleCompleted = true; // Mark the puzzle as completed
-        }
-        else
-        {
-            // Player failed
-            Debug.Log("Failed!"); // Log failure
-            feedbackText.text = ""; // Clear feedback
-            StartCoroutine(ShowTryAgainText()); // Show "Try Again!" and reset
-            timingSlider.value = 0; // Reset slider to start position
-        }
+        Debug.Log(isUnlocked ? "Already unlocked!" : "Puzzle is not active!");
+        return; // Prevent further action if already unlocked or puzzle is not active
     }
 
+    float sliderPos = timingSlider.value; // Slider's current value (0 to 1 range)
+    float targetMin = targetZone.anchorMin.x; // Start of target zone
+    float targetMax = targetZone.anchorMax.x; // End of target zone
+
+    Debug.Log($"Slider Position: {sliderPos}, Target Min: {targetMin}, Target Max: {targetMax}"); // Debug log
+
+    // Check if within target zone with a margin of error for better feedback
+    float marginOfError = 0.05f; // Adjust this value for more or less forgiveness
+    if (sliderPos >= targetMin - marginOfError && sliderPos <= targetMax + marginOfError)
+    {
+        // Player succeeded
+        feedbackText.gameObject.SetActive(false); // Hide feedback text when success
+        StartCoroutine(ShowSuccessMessage()); // Call method to show success feedback
+        isUnlocked = true;
+        isPuzzleActive = false; // Stop slider movement
+        isPuzzleCompleted = true; // Mark the puzzle as completed
+    }
+    else
+    {
+        // Player failed
+        Debug.Log("Failed!"); // Log failure
+        feedbackText.text = ""; // Clear feedback
+        StartCoroutine(ShowTryAgainText()); // Show "Try Again!" and reset
+        timingSlider.value = 0; // Reset slider to start position
+    }
+}
     private IEnumerator ShowTryAgainText()
     {
         // Disable the unlock button while showing the "Try Again!" message

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class JigsawController : MonoBehaviour
@@ -11,23 +10,32 @@ public class JigsawController : MonoBehaviour
     private GameObject WinText; // UI text for win message
 
     [SerializeField]
+    private GameObject FeedbackText; // UI for feedback text
+    
+    [SerializeField]
     private GameObject puzzlePanel; // Panel containing the puzzle pieces
 
     public JigsawTrigger jigsawTrigger; // Reference to the JigsawTrigger component
 
     public static bool youWin; // Static variable to track win state
-    private bool puzzleVisible = true; // Track if the puzzle is visible
-    private bool puzzleCompleted = false; // Track if the puzzle has been completed
+    private static bool puzzleCompleted = false; // Static variable to track if the puzzle is completed
 
     void Start()
     {
         WinText.SetActive(false); // Hide win text initially
+        FeedbackText.SetActive(true); // Show feedback text at the start
         youWin = false; // Initialize win state
+
+        // Check if the puzzle has already been completed
+        if (puzzleCompleted)
+        {
+            HidePuzzle(); // Hide the puzzle if completed
+        }
     }
 
     void Update()
     {
-        if (puzzleVisible && !puzzleCompleted && AreAllPiecesAligned()) // Check if puzzle is visible, not completed, and pieces are aligned
+        if (!puzzleCompleted && AreAllPiecesAligned()) // Check if puzzle is not completed and pieces are aligned
         {
             youWin = true; // Set win state
             Debug.Log("Puzzle Completed! Showing Win Text."); // Debug log
@@ -50,6 +58,7 @@ public class JigsawController : MonoBehaviour
 
     private IEnumerator ShowWinTextAndHidePuzzle()
     {
+        FeedbackText.SetActive(false); // Hide feedback text before showing win text
         ShowWinText(); // Show win text
         Debug.Log("Win Text Displayed."); // Debug log
         yield return new WaitForSeconds(2f); // Wait for 2 seconds (or any duration you want)
@@ -57,13 +66,14 @@ public class JigsawController : MonoBehaviour
     }
 
     private void HidePuzzle()
-{
-    puzzlePanel.SetActive(false); // Hide the panel containing the puzzle pieces
-    puzzleVisible = false; // Set puzzle visibility to false
-    puzzleCompleted = true; // Set puzzle completed to true
-    jigsawTrigger.CompletePuzzle(); // Call the CompletePuzzle method on the JigsawTrigger instance
-    Debug.Log("Puzzle is now hidden and marked as completed."); // Debug log
-}
+    {
+        puzzlePanel.SetActive(false); // Hide the panel containing the puzzle pieces
+        WinText.SetActive(false); // Hide the win text
+        FeedbackText.SetActive(false); // Hide the feedback text
+        puzzleCompleted = true; // Set puzzle completed to true
+        jigsawTrigger.CompletePuzzle(); // Call the CompletePuzzle method on the JigsawTrigger instance
+        Debug.Log("Puzzle is now hidden and marked as completed."); // Debug log
+    }
 
     private void ShowWinText()
     {
