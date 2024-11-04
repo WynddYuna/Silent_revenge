@@ -19968,6 +19968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseButton: {fileID: 624627177}
+  playerMovement: {fileID: 2037881664}
 --- !u!4 &1851498225
 Transform:
   m_ObjectHideFlags: 0
