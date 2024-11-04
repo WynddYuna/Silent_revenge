@@ -8,7 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public int health = 100; // Player health
     public Rigidbody2D rb; // Player rigidbody
     public Animator animator; // Player animator
-    public GameObject unlockUICanvas; // Reference to the unlock UI
+    public GameObject unlockUICanvas;
+    
+    
+    public float KBCounter;
+    public float KBForce;
+     public float KBTotalTime;
+    public bool KnockFromRight;
+     // Reference to the unlock UI
 
     void Start()
     {
@@ -56,9 +63,23 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+  if(KBCounter <= 0){
 
+             rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
+        }else{
+
+            if(KnockFromRight==true){
+                rb.velocity=new Vector2(-KBForce,KBForce);
+    
+            }
+            if(KnockFromRight==false){
+                rb.velocity=new Vector2(KBForce,KBForce);
+
+            }
+            KBCounter -= Time.deltaTime;
+        }
         // Update the player's velocity based on horizontal movement
-        rb.velocity = new Vector2(horizontalMovement * moveSpeed, rb.velocity.y);
+        
         GroundCheck();
         Gravity();
         Flip();
