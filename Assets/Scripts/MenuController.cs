@@ -9,6 +9,8 @@ public class MenuController : MonoBehaviour
     [SerializeField] public GameObject gui;
     [SerializeField] public GameObject Bar;
     public GameObject menuCanvas; // Reference to the menu canvas
+
+    [SerializeField] public GameObject InstructionsText;
     public Button menuButton; // Reference to the UI button
     public GameObject[] otherCanvases; // Array of other canvases to close
 
@@ -49,6 +51,7 @@ public class MenuController : MonoBehaviour
             CloseOtherCanvases();
             gui.SetActive(false);
             Bar.SetActive(false);
+            InstructionsText.SetActive(false);
             
         }
         else
@@ -57,6 +60,7 @@ public class MenuController : MonoBehaviour
             menuCanvas.SetActive(false);
             gui.SetActive(true);
             Bar.SetActive(true);
+            InstructionsText.SetActive(true);
             // Reopen the last active canvas if it exists
             if (lastActiveCanvas != null)
             {
