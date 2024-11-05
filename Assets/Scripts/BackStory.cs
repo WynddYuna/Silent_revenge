@@ -12,7 +12,7 @@ public class BackStory : MonoBehaviour
     private string[] storyLines = {
         "*Chapter 1: The Awakening*",
         "Level 1: The Beginning",
-        "Elias's journey begins on a fateful night when he hears a strange noise that awakens his sister, Lila. As the moon casts eerie shadows, Elias warns Lila to stay inside.",
+        "Elias's journey begins on a fateful night when he hears a strange noise that awakens his him. As the moon casts eerie shadows, Elias always warns Lila to stay inside.",
         "Objectives:    Learn basic controls and Experience Lila's awakening and her tragic fate.",
         "Game Mechanics:    Movement: Use arrow keys or joystick to move Elias. Interaction: Use the 'E' key or an on-screen button to interact with objects."
     };
