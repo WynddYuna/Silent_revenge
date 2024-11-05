@@ -3508,6 +3508,7 @@ MonoBehaviour:
   gui: {fileID: 1926990588}
   Bar: {fileID: 0}
   menuCanvas: {fileID: 1248200541}
+  InstructionsText: {fileID: 0}
   menuButton: {fileID: 1937832372}
   otherCanvases: []
 --- !u!114 &520173582
@@ -4193,8 +4194,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -363350103
-  m_SortingLayer: 1
+  m_SortingLayerID: 1835124867
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
@@ -44613,11 +44614,11 @@ Transform:
   m_GameObject: {fileID: 673501344}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32, y: 2.1306, z: 0}
-  m_LocalScale: {x: 0.4474, y: 1.1882, z: 1}
+  m_LocalPosition: {x: 32, y: -1.344261, z: 0}
+  m_LocalScale: {x: 0.4474, y: 2.5781565, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2134589748}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &679611306
 GameObject:
@@ -56272,6 +56273,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 673501346}
   - {fileID: 970565711}
   - {fileID: 1096984153}
   m_Father: {fileID: 0}
@@ -56475,7 +56477,6 @@ SceneRoots:
   - {fileID: 314269777}
   - {fileID: 1676786787}
   - {fileID: 1147993623}
-  - {fileID: 673501346}
   - {fileID: 702792821}
   - {fileID: 65776104}
   - {fileID: 710054111}
