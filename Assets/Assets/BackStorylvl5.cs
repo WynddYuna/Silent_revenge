@@ -11,7 +11,7 @@ public class BackStorylvl5 : MonoBehaviour
     private int currentIndex = 0; // Current index of the storyline
     private string[] storyLines = {
         "*Level 5: The Guardian*",
-        "A fierce guardian blocks Elias's way. To proceed, he must defeat this formidable foe.",
+        "A fierce guardian (THE WITCH) blocks Elias's way. To proceed, he must defeat this formidable foe.",
         "Objectives:   Defeat the mini-boss. Find a significant clue about the Shadow Witch and Elias sister.",
         "Game Mechanics:    Combat: Use attack and dodge mechanics to fight the guardian."
     };

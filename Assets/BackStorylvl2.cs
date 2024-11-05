@@ -12,9 +12,9 @@ public class BackStory2 : MonoBehaviour
     private string[] storyLines = {
         "*Level 2: The Clue*",
         "Level 1: The Beginning",
-        "In the aftermath of Lila's death, Elias finds a torn piece of her favorite doll and a mysterious note leading him toward the haunted woods, filled with dark promises of vengeance.",
+        "While finding a clue about his sister, Elias finds a torn piece of a mysterious note leading him toward the haunted woods.",
         "Objectives:    Find the first clue about Lila's fate. Head towards the haunted woods.",
-        "Game Mechanics:    Collect items and read the note."
+        "Game Mechanics:    Collect items and go to the next level"
     };
 
     void Start()
